@@ -11,7 +11,6 @@ const LoginButton = (props) => (
       Login Button
   </button>
 
-  
 );
 
 export default LoginButton;
