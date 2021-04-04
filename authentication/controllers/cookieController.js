@@ -18,7 +18,7 @@ cookieController.setSSIDCookie = (req, res, next) => {
     httpOnly: true
   })
 
-  return next();
+  return next();   
 }
 
-module.exports = cookieController;
+module.exports = cookieController;    

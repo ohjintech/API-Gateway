@@ -16,29 +16,30 @@ class SearchContainer extends React.Component{
     // requesting to back end, not the API
     // API fetch logic happens at backend
     // prop drill response into to search results
-  performSearch(string){
-    // if(e.key === 'Enter'){
-    // string.replace(/\s+$/, '') gets rid of beginning and trailing whitespaces
-      //this.testfuntion()
-    let tempArray = string.split(' ').filter(el => el !== '');
-    let updatedString = tempArray.join('+')
-    const sendObj = {"updatedString":updatedString}
-    // console.log('updatedString: ', updatedString)
-    let requestBody = {
-      method: 'POST',
-      headers: {
-      
-        'Content-Type': 'application/json'
-      },
-      // headers: {'Content-Type': 'text/javascript'},
-      // body: JSON.stringify(updatedString)
-      body: JSON.stringify(sendObj)
-    };
-
-    fetch('/search', requestBody)
-    .then(response => response.json())
-    .then(data => console.log('Data received from backend: ', data))
-    }
+    performSearch(string){
+      // if(e.key === 'Enter'){
+      // string.replace(/\s+$/, '') gets rid of beginning and trailing whitespaces
+        //this.testfuntion()
+      let tempArray = string.split(' ').filter(el => el !== '');
+      let updatedString = tempArray.join('+')
+      const sendObj = {"updatedString":updatedString}
+      // console.log('updatedString: ', updatedString)
+      let requestBody = {
+        method: 'POST',
+        headers: {
+        
+          'Content-Type': 'application/json'
+        },
+        // headers: {'Content-Type': 'text/javascript'},
+        // body: JSON.stringify(updatedString)
+        body: JSON.stringify(sendObj)
+      };
+  
+      fetch('/search', requestBody) 
+      .then(response => response.text())
+      .then(data => console.log('Data received from backend: ', data))
+      .catch(err => console.log(err))
+      }
   
   render(){
     //container array 

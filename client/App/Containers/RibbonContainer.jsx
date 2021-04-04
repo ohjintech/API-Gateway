@@ -7,16 +7,49 @@ class RibbonContainer extends React.Component{
   constructor(props){
     super(props)
 
-    this.doLogin = this.doLogin.bind(this)
-  }
 
-  doLogin(e) {
-    fetch('/login')
-    .then(res => res.json())
-    .then((data) => {
-
-    })
+    this.doLogIn = this.doLogIn.bind(this)
+    this.doSignUp = this.doSignUp.bind(this) 
   }
+  
+  // invoked when user presses login button
+  doLogIn(userStr, pwStr) {
+
+    // debugging
+    console.log(' SignUp Button Pressed.')
+    console.log(`Username: ${userStr}, Password: ${pwStr}`)
+
+    // get ride of whitespaces from login
+    string.replace(/\s+$/, '');
+
+    
+
+    let requestBody = {
+      method: 'POST',
+      headers: {
+      
+        'Content-Type': 'application/json'
+      },
+      // headers: {'Content-Type': 'text/javascript'},
+      // body: JSON.stringify(updatedString)
+      body: JSON.stringify(sendObj)
+    }
+  
+
+    // ping the backend with the 
+    fetch('/login', requestBody) 
+      .then(response => response.text())
+      .then(data => console.log('Data received from backend: ', data))
+      .catch(err => console.log(err))
+    
+  };
+
+  // invoked when user presses sign up button
+  doSignUp() {
+    console.log(' SignUp Button Pressed.')
+
+  };
+
   
   render(){
       return(
@@ -26,18 +59,13 @@ class RibbonContainer extends React.Component{
           <h2>password</h2>
           <input className="classtext"type="text" />
 
-         
-          <SignupButton/>
-<<<<<<< HEAD
-          <LoginButton loginFunc={this.doLogin}/>
-=======
+        
+          <SignupButton signUpFcn={this.doSignUp}/>
     
 
 
-          <LoginButton/>
+          <LoginButton logInFcn={this.doLogIn}/>
   
-          
->>>>>>> 4794007a88f914aeec5d05785545ad6dc2ffbe04
           </div>
       )
   }

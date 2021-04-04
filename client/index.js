@@ -14,10 +14,10 @@ class App extends React.Component{
     render(){
         return(
            <Router>
-              <Route path='/' exact component={MainPage}/>
-              <Route path='/login' exact component={LoginPage}/>
+              <Route path='/' exact component={MainPage}/> 
+              <Route path='/login' exact component={LoginPage}/> 
               <Route path='/signup' exact component={SignupPage}/>
-            </Router> 
+            </Router>   
         )
     }
 }

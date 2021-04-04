@@ -9,13 +9,15 @@ const mongoose = require('mongoose');
 const userController = require('../authentication/controllers/userController');
 const cookieController = require('../authentication/controllers/cookieController');
 const sessionController = require('../authentication/controllers/sessionController');
+const apiController = require('../authentication/controllers/apiController');
+
 
 // Mongoose Database connection
 console.log('Connecting to Mongoose Database...');
-const mongoURI = 'mongodb://localhost/API-Gateway';
+const mongoURI = 'mongodb://localhost/API-Gateway';   
 mongoose.connect(mongoURI, {useNewUrlParser: true});
 mongoose.connection.once('open', () => {
-    console.log('Successfully Connected to Mongoose Database')
+    console.log('Successfully Connected to Mongoose Database') 
 });
 
 // express parsers
@@ -36,36 +38,38 @@ app.get('/',
 // login information is inside request body
 app.post('/signup', 
     userController.createUser,
-    cookieController.setSSIDCookie, 
+    cookieController.setSSIDCookie,  
     sessionController.startSession, 
     (req, res) => {
-        res.status(200).send('signup successful', res.locals)
+        res.status(200).send('signup successful', res.locals) 
     }
 );
 
 // search button 
 // GET request to server, 
     // take the request, and parse into a usable API fetch request, spits back out the response and send to the front page
-app.post('/search', (req, res) => {
+app.post('/search', 
+    apiController.googleBooks,
+    (req, res) => {
     console.log('Request body: ', req.body.updatedString)
-    res.status(200).send('We are at the back end /search endpoint')
-    console.log('We are at the back end /search endpoint')
+    console.log('res locals data:', res.locals.data)
+    res.status(200).send(res.locals.finalUrl)
+    // console.log('We are at the back end /search endpoint')
 })
 
 // verify user is logged in. no subsequent middleware is activated unless user is verified. float the 
 // check for verification at the last middleware, where it can be directed to different endpoints depending on the state of successful login
 app.post('/login', 
     userController.verifyUser, 
-    cookieController.setSSIDCookie, 
+    cookieController.setSSIDCookie,  
     sessionController.startSession, 
     (req, res) => {    
-        if (res.locals.signupFail) console.log('invalid login credentials')
+        if (res.locals.signupFail) console.log('invalid login credentials')  
         else {
-            res.status(200).send('login success')
+            res.status(200).send('login success')   
         }
     }
 );
-
 
 // handle unrecognized requests with 404
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
