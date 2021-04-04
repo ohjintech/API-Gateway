@@ -5,7 +5,7 @@ const SearchBar = (props) => (
   <div>
   <input
     id="searchvalues"
-    type="search"
+        type="search"
     placeholder="Please enter a request..."
     value={props.inputName}
     // onKeyPress={ (e) => props.onEnter(e)}

@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/server.js",
     "build-win": "SET NODE_ENV=production&&webpack",
-    "dev-win": "concurrently \"nodemon server/server.js\"  \"SET NODE_ENV=development&&webpack serve --open\"",
+    "dev-win": " \"nodemon server/server.js\"  \"SET NODE_ENV=development&&webpack serve --open\"",
     "build": "SET NODE_ENV=production webpack",
     "dev": "webpack serve"
   },

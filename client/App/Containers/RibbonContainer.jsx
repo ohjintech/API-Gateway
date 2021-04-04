@@ -5,6 +5,16 @@ import LoginButton from '../Components/LoginButton.jsx'
 class RibbonContainer extends React.Component{
   constructor(props){
     super(props)
+
+    this.doLogin = this.doLogin.bind(this)
+  }
+
+  doLogin(e) {
+    fetch('/login')
+    .then(res => res.json())
+    .then((data) => {
+
+    })
   }
   
   render(){
@@ -15,7 +25,7 @@ class RibbonContainer extends React.Component{
           <h2>password</h2>
           <input className="classtext"type="text" />
           <SignupButton/>
-          <LoginButton/>
+          <LoginButton loginFunc={this.doLogin}/>
           </div>
       )
   }
