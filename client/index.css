@@ -49,3 +49,56 @@ body{
     background-color:pink;
     
 }
+
+.signuppage{
+    background-color: pink;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupbox{
+    display: flex;
+    gap:2.5rem;
+    flex-direction: column;
+    height: 60vh;
+    width: 30vw;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 5px 3px 3px black;
+}
+
+.loginpage{
+    background-color: pink;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginbox{
+    display: flex;
+    gap: 2.5em;
+    flex-direction: column;
+    height: 60vh;
+    width: 30vw;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 5px 3px 3px black;
+}
+
+.form{
+    position: relative;
+    width: 80%;
+    left: 3rem;
+    padding: 0.5rem;
+}
+
+.wunderpuss{
+    height: 20rem;
+    width: 25rem;
+    position: relative;
+    top: 1rem;
+    left: 4.5rem;
+}

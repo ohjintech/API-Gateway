@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 
 //  // react hooks
 //  const [ details, setDetails ] = useState({});
@@ -11,9 +11,11 @@ import React, { Component } from 'react';
 // popup notification
 // ribbon or user input fields disappears
 const LoginButton = (props) => (
-  
-  <button className="login" onClick={() => props.loginFunc() }><i className="fas fa-sign-in-alt"></i>
-      Login Button
+
+  <button className="login" onClick="">
+     <Link to='login'>
+    <i className="fas fa-sign-in-alt">Login Button</i>
+    </Link>
   </button>
 
 );
