@@ -22,8 +22,6 @@ class RibbonContainer extends React.Component{
     // get ride of whitespaces from login
     string.replace(/\s+$/, '');
 
-    
-
     let requestBody = {
       method: 'POST',
       headers: {
@@ -64,7 +62,7 @@ class RibbonContainer extends React.Component{
     
 
 
-          <LoginButton logInFcn={this.doLogIn}/>
+          <LoginButton />
   
           
           </div>
