@@ -52,8 +52,9 @@ app.post('/search',
     apiController.googleBooks,
     (req, res) => {
     console.log('Request body: ', req.body.updatedString)
-    console.log('res locals data:', res.locals.data)
-    res.status(200).send(res.locals.finalUrl)
+    // console.log('res locals data:', res.locals.data)
+    // console.log(res.locals.data)
+    res.status(200).json(res.locals.data)
     // console.log('We are at the back end /search endpoint')
 })
 

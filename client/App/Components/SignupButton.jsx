@@ -13,7 +13,7 @@ const SignupButton = () => {
        <button className="signup" onClick={handleClick}>
        <Link to='signup'>
          <i className="fas fa-user-plus"></i>Sign Up
-         </Link>
+        </Link>
        </button>
        
      

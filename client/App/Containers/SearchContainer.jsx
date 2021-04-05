@@ -6,6 +6,7 @@ class SearchContainer extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      books: [],
       searchResults: null
     }
 
@@ -26,7 +27,7 @@ class SearchContainer extends React.Component{
       // console.log('updatedString: ', updatedString)
       let requestBody = {
         method: 'POST',
-        headers: {
+        headers: { 
         
           'Content-Type': 'application/json'
         },
@@ -36,8 +37,25 @@ class SearchContainer extends React.Component{
       };
   
       fetch('/search', requestBody) 
-      .then(response => response.text())
-      .then(data => console.log('Data received from backend: ', data))
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data received from backend: ', data[0])
+        let updatedState = this.state;
+        let bookArray = [];
+        data.forEach(element => {
+          let bookInfo = {
+            title: element.volumeInfo.title,       
+            selfLink: element.selfLink,     
+            author: element.volumeInfo.authors[0],            
+          }
+          bookArray.push(bookInfo)
+        })
+        updatedState.books = bookArray
+        console.log('updated state',updatedState)
+        this.setState(updatedState)
+
+      })
+
       .catch(err => console.log(err))
       }
   
@@ -46,13 +64,17 @@ class SearchContainer extends React.Component{
     //made a for loop for each thing i got from my fetch
     // <SearchResults booktite=data.title/>
     //render container array in the return statement
+    const rowsArray = [];
+    for (let i = 0; i < this.state.books.length; i++){
+      rowsArray.push(<SearchResults key = {i} books={this.state.books[i]}/>)
+    }
     
       return(
         <div className='searchcontainer'>
             <SearchBar onEnter={this.performSearch} />
          
             <div className='searchresults'>
-              {this.state.searchResults}
+              {rowsArray}
          </div>
         </div>
        
