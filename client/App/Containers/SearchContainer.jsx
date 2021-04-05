@@ -27,7 +27,6 @@ class SearchContainer extends React.Component{
       let requestBody = {
         method: 'POST',
         headers: {
-        
           'Content-Type': 'application/json'
         },
         // headers: {'Content-Type': 'text/javascript'},
