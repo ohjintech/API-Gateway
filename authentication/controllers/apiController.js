@@ -15,6 +15,7 @@ apiController.googleBooks = (req, res, next) => {
     })
     .then(data => {
         for (let i = 0; i < 4 && i < data.items.length; i++) {
+            if (data.items[i].volumeInfo.authors === undefined) data.items[i].volumeInfo.authors = ['No Author Listed']
             let bookInfo = {
                 title: data.items[i].volumeInfo.title,  
                 selfLink: data.items[i].selfLink,     
