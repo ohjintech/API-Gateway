@@ -37,7 +37,7 @@ module.exports = {
      * to localhost:3000/api/* (where our Express server is running)
      */
      proxy: {
-      '/search': 'http://localhost:3000'
+      '/': 'http://localhost:3000'
     }
   },
   module: {

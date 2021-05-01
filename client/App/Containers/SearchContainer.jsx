@@ -18,9 +18,7 @@ class SearchContainer extends React.Component{
     // API fetch logic happens at backend
     // prop drill response into to search results
     performSearch(string){
-      // if(e.key === 'Enter'){
-      // string.replace(/\s+$/, '') gets rid of beginning and trailing whitespaces
-        //this.testfuntion()
+
       let tempArray = string.split(' ').filter(el => el !== '');
       let updatedString = tempArray.join('+')
       const sendObj = {"updatedString":updatedString}
@@ -31,8 +29,7 @@ class SearchContainer extends React.Component{
         
           'Content-Type': 'application/json'
         },
-        // headers: {'Content-Type': 'text/javascript'},
-        // body: JSON.stringify(updatedString)
+
         body: JSON.stringify(sendObj)
       };
   
@@ -44,9 +41,11 @@ class SearchContainer extends React.Component{
         let bookArray = [];
         data.forEach(element => {
           let bookInfo = {
-            title: element.volumeInfo.title,       
+            // title: element.volumeInfo.title,       
+            title: element.title,       
             selfLink: element.selfLink,     
-            author: element.volumeInfo.authors[0],            
+            // author: element.volumeInfo.authors[0],            
+            author: element.author,            
           }
           bookArray.push(bookInfo)
         })
@@ -70,6 +69,7 @@ class SearchContainer extends React.Component{
     }
     
       return(
+        
         <div className='searchcontainer'>
             <SearchBar onEnter={this.performSearch} />
          

@@ -51,12 +51,8 @@ userController.verifyUser = (req, res, next) => {
       res.locals.id = user._id.toString();
 
       user.comparePw(req.body.password, function(err, isMatch) {
-        if (isMatch) {
-          return next();
-        }
-        else {
-          return res.status(200).send('/loginFail'); 
-        }
+        res.locals.loginFail = isMatch ? false : true 
+        return next();
       }); 
     }
 

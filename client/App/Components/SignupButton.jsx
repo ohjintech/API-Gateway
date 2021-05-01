@@ -7,11 +7,10 @@ import { Link } from 'react-router-dom'
 const SignupButton = () => {
     function handleClick(e) {
         e.preventDefault();
-      console.log('button working!')
     }
     return(
        <button className="signup" onClick={handleClick}>
-       <Link to='signup'>
+       <Link to='/signup'>
          <i className="fas fa-user-plus"></i>Sign Up
         </Link>
        </button>
